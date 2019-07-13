@@ -24,9 +24,13 @@ async function readTextFile(filePath) {
 
 function displayRecipe(recipe) {
     let converter = new showdown.Converter()
-    let newRecipeElement = document.createElement('p')
-    newRecipeElement.innerHTML = converter.makeHtml(recipe)
+    let newRecipeElement = document.createElement('div')
+    newRecipeElement.className = 'card'
+    let innerRecipeBody = document.createElement('div')
+    innerRecipeBody.className = 'card-body'
+    innerRecipeBody.innerHTML = converter.makeHtml(recipe)
+    newRecipeElement.appendChild(innerRecipeBody)
 
-    let recipesContainer = document.querySelector("#recipesContainer")
+    let recipesContainer = document.querySelector('#recipesContainer')
     recipesContainer.insertBefore(newRecipeElement, recipesContainer.firstChild)
 }
